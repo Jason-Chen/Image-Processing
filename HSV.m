@@ -1,8 +1,6 @@
-﻿function HSV_res = HSV(img , brightness)
-
+﻿function HSV_res = HSV(img, brightness)
 [height width c]=size(img);
 HSV_res = double(zeros(height,width,c));
-
 for i = 1:1:height
     for j = 1:1:width
         % 取出RGB通道

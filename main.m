@@ -30,28 +30,37 @@ figure(7); imshow(Cb); imwrite(Cb,'lenaCb.jpg');
 figure(8); imshow(Cr); imwrite(Cr,'lenaCr.jpg');
 
 % % % % % % HSV % % % % % %
-HSV = HSV(img,1);
-% HSV = rgb2hsv(img);
+HSVimg = HSV(img, 1);
 
-H = HSV(:,:,1);
-S = HSV(:,:,2);
-V = HSV(:,:,3);
+H = HSVimg(:,:,1);
+S = HSVimg(:,:,2);
+V = HSVimg(:,:,3);
 
-figure(9); imshow(HSV); imwrite(HSV,'lenaHSV.jpg');
+figure(9); imshow(HSVimg); imwrite(HSVimg,'lenaHSV.jpg');
 figure(10); imshow(H); imwrite(H,'lenaH.jpg');
 figure(11); imshow(S); imwrite(S,'lenaS.jpg');
 figure(12); imshow(V); imwrite(V,'lenaV.jpg');
 
+HSVimg = rgb2hsv(img);
+H = HSVimg(:,:,1);
+S = HSVimg(:,:,2);
+V = HSVimg(:,:,3);
+V = V * 2;
+
+newhsv = cat(3, H, S, V);
+RGB = hsv2rgb(newhsv);
+figure(13); imshow(RGB); imwrite(newhsv,'lena_HSV_brighter.jpg');
+figure(14); imshow(RGB); imwrite(RGB,'lena_brighter.jpg');
+
 % % % % % % histogram_equalization % % % % % %
 [heq, before_hist, after_hist] = histogram_equalization(img2);
-figure(13); imshow(img2);
-figure(14); imshow(heq);
+figure(15); imshow(img2);
+figure(16); imshow(heq);
 imwrite(heq, 'lean2-equalization.jpg');
-figure(15); bar(before_hist);
-saveas(figure(15), 'before_hist.png');
-figure(16); bar(after_hist);
-saveas(figure(16), 'after_hist.png');
-
+figure(17); bar(before_hist);
+saveas(figure(17), 'before_hist.png');
+figure(18); bar(after_hist);
+saveas(figure(18), 'after_hist.png');
 
 % % % % % % world_coordinates % % % % % %
 [x1,y1] = world_coordinates(100,100,100);
