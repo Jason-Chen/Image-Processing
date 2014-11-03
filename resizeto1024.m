@@ -3,6 +3,7 @@
 [height width c]=size(im);
 resize1024 = uint8(zeros(height*2,width*2,c));
 
+% 四點接放相同數值
 for i = 1:1:height
     for j = 1:1:width
         for k = 1:1:c

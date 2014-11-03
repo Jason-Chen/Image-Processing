@@ -2,6 +2,7 @@
 [height width c]=size(img);
 resize256_rotate90 = uint8(zeros(height/2,width/2,c));
 
+% 兩點取一點, 轉90度
 for i = 1:1:height/2
     for j = 1:1:width/2
         for k = 1:1:c
